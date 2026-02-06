@@ -7,6 +7,12 @@ declare class ExpoAlipayModule extends NativeModule<ExpoAlipayModuleEvents> {
   getVersion(): Promise<string>
 
   /**
+   * 设置支付宝SDK环境模式（仅Android生效）。
+   * @param mode 环境模式：'sandbox' | 'online' | 'pre_sandbox'
+   */
+  setSandboxMode(mode: 'sandbox' | 'online' | 'pre_sandbox'): Promise<void>;
+
+  /**
    * 支付宝支付。
    * @param options 支付参数。
    * @returns 支付调用结果。

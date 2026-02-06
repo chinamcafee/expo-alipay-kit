@@ -1,5 +1,5 @@
 {
-  "name": "expo-alikit",
+  "name": "expo-alipay-kit",
   "version": "0.1.1",
   "description": "React Native Alipay support",
   "main": "build/index.js",
@@ -21,18 +21,17 @@
     "expo-alipay",
     "ExpoAlipay"
   ],
-  "repository": "https://github.com/likeso/expo-alipay",
-  "bugs": {
-    "url": "https://github.com/likeso/expo-alipay/issues"
-  },
-  "author": "Aron <Random1996@163.com> (https://github.com/likeso)",
+  "repository": "https://github.com/chinamcafee/expo-alipay-kit",
+  "author": "chinamcafee <chinamcafee@qq.com> (https://github.com/chinamcafee/)",
   "license": "MIT",
-  "homepage": "https://github.com/likeso/expo-alipay#readme",
-  "dependencies": {},
+  "homepage": "https://github.com/chinamcafee/expo-alipay-kit#readme",
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
   "devDependencies": {
     "@types/react": "~19.0.0",
-    "expo-module-scripts": "^4.1.9",
     "expo": "~53.0.0",
+    "expo-module-scripts": "^4.1.9",
     "react-native": "0.79.1"
   },
   "peerDependencies": {

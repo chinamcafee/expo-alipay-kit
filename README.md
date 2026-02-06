@@ -7,9 +7,9 @@
 # 安装
 
 ```shell
-npx expo install expo-alikit
+npx expo install expo-alipay-kit
 ```
-为什么是`expo-alikit`？因为`expo-alipay`的名字在npm中已经被占用，但后者看起来只是一个demo项目，目前我正在尝试联系作者，看看是否可以让他删掉那个仓库。
+为什么是`expo-alipay-kit`？因为`expo-alipay`的名字在npm中已经被占用，但后者看起来只是一个demo项目，目前我正在尝试联系作者，看看是否可以让他删掉那个仓库。
 目前为止，用户可能会在alikit和alipay之间产生歧义，只需要记住，alikit只是npm的包名，其他代码相关的地方保持不变。
 
 # 配置
@@ -35,7 +35,7 @@ npx expo install expo-alikit
 > 注意，不支持在expo go中直接使用，请配合`expo-dev-client`一起使用。
 
 ```ts
-import ExpoAlipay from "expo-alikit";
+import ExpoAlipay from "expo-alipay-kit";
 ```
 
 ## 支付
@@ -72,7 +72,7 @@ const result = await ExpoAlipay.auth({
 ## 事件监听
 
 ```ts
-import ExpoAlipay from "expo-alikit";
+import ExpoAlipay from "expo-alipay-kit";
 
 /// 通过这种方式监听回调结果
 const onPayResultPayload = useEvent(ExpoAlipay, 'onPayResult');
