@@ -1,6 +1,6 @@
 import { NativeModule, requireNativeModule } from 'expo';
 
-import { AuthOptions, ExpoAlipayModuleEvents, PayOptions } from './ExpoAlipay.types';
+import type { AuthOptions, ExpoAlipayModuleEvents, PayOptions } from './ExpoAlipay.types';
 
 declare class ExpoAlipayModule extends NativeModule<ExpoAlipayModuleEvents> {
 

@@ -9,7 +9,7 @@
     "clean": "expo-module clean",
     "lint": "expo-module lint",
     "test": "expo-module test",
-    "prepare": "expo-module prepare",
+    "prepare": "command -v expo-module >/dev/null 2>&1 && expo-module prepare || echo \"Skipping expo-module prepare: expo-module is not installed\"",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module",
     "open:ios": "xed example/ios",
@@ -25,14 +25,13 @@
   "author": "chinamcafee <chinamcafee@qq.com> (https://github.com/chinamcafee/)",
   "license": "MIT",
   "homepage": "https://github.com/chinamcafee/expo-alipay-kit#readme",
-  "dependencies": {
-    "typescript": "^5.9.3"
-  },
   "devDependencies": {
-    "@types/react": "~19.0.0",
-    "expo": "~53.0.0",
-    "expo-module-scripts": "^4.1.9",
-    "react-native": "0.79.1"
+    "@types/react": "~19.2.14",
+    "expo": "56.0.8",
+    "expo-module-scripts": "56.0.3",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
+    "typescript": "~6.0.3"
   },
   "peerDependencies": {
     "expo": "*",

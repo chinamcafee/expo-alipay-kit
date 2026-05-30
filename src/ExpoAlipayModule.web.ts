@@ -1,6 +1,6 @@
 import { registerWebModule, NativeModule } from 'expo';
 
-import { ExpoAlipayModuleEvents } from './ExpoAlipay.types';
+import type { ExpoAlipayModuleEvents } from './ExpoAlipay.types';
 
 class ExpoAlipayModule extends NativeModule<ExpoAlipayModuleEvents> {
   
