@@ -11,12 +11,15 @@ import expo.modules.kotlin.modules.ModuleDefinition
 import java.net.URL
 
 class ExpoAlipayModule : Module() {
+    private var currentEnvMode: String = "online"
+
     override fun definition() = ModuleDefinition {
         Name("ExpoAlipay")
 
         Events("onPayResult", "onAuthResult")
 
         AsyncFunction("registerApp") { appId: String ->
+            Log.i("ExpoAlipay", "registerApp called, appId=$appId")
             appContext.reactContext.let {
                 AlipayApi.registerApp(it, appId)
             }
@@ -28,20 +31,29 @@ class ExpoAlipayModule : Module() {
         }
 
         AsyncFunction("setSandboxMode") { mode: String ->
+            Log.i("ExpoAlipay", "setSandboxMode called, mode=$mode")
 
             when (mode) {
                 "sandbox" -> {
                     EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX)
+                    currentEnvMode = mode
                 }
 
                 "online" -> {
                     EnvUtils.setEnv(EnvUtils.EnvEnum.ONLINE)
+                    currentEnvMode = mode
                 }
 
                 "pre_sandbox" -> {
                     EnvUtils.setEnv(EnvUtils.EnvEnum.PRE_SANDBOX)
+                    currentEnvMode = mode
+                }
+
+                else -> {
+                    Log.w("ExpoAlipay", "setSandboxMode received unknown mode=$mode, keep currentEnvMode=$currentEnvMode")
                 }
             }
+            Log.i("ExpoAlipay", "currentEnvMode=$currentEnvMode")
         }
 
         AsyncFunction("auth") { options: AuthOptions, promise: Promise ->
@@ -56,8 +68,13 @@ class ExpoAlipayModule : Module() {
 
         AsyncFunction("pay") { options: PayOptions, promise: Promise ->
             val runnable = Runnable {
+                Log.i(
+                    "ExpoAlipay",
+                    "pay called, currentEnvMode=$currentEnvMode, orderInfoLength=${options.orderInfo.length}, scheme=${options.scheme}"
+                )
                 val alipay = PayTask(appContext.currentActivity)
                 val result = alipay.payV2(options.orderInfo, true)
+                Log.i("ExpoAlipay", "pay result, currentEnvMode=$currentEnvMode, result=$result")
                 promise.resolve(result)
                 sendEvent("onPayResult", result)
             }
